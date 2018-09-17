@@ -59,7 +59,7 @@ if [ $downloadData = "Y" ] || [ $downloadData = "y" ]; then
   fileExist=$(find $HOME -maxdepth 1 -type f -name 'SC2.4.1.2.60604_2018_05_16.zip' | wc -l)
   if [ $fileExist -eq 0 ]; then
     echo "Downloading StarCraft 2 Client data... (~4.2GB)"
-    wget -P=$HOME http://blzdistsc2-a.akamaihd.net/Linux/SC2.4.1.2.60604_2018_05_16.zip
+    wget -P $HOME http://blzdistsc2-a.akamaihd.net/Linux/SC2.4.1.2.60604_2018_05_16.zip
     echo "\"StarCraft 2 Client data\" download finished!"
   else
     echo "\"StarCraft 2 Client data\" found at \"$HOME/SC2.4.1.2.60604_2018_05_16.zip\"!"
@@ -70,7 +70,7 @@ if [ $downloadData = "Y" ] || [ $downloadData = "y" ]; then
   fileExist=$(find $HOME -maxdepth 1 -type f -name 'Ladder2018Season2_Updated.zip' | wc -l)
   if [ $fileExist -eq 0 ]; then
     echo "Downloading StarCraft 2 Ladder 2018 Season 2 Map data... (~22MB)"
-    wget -P=$HOME http://blzdistsc2-a.akamaihd.net/MapPacks/Ladder2018Season2_Updated.zip
+    wget -P $HOME http://blzdistsc2-a.akamaihd.net/MapPacks/Ladder2018Season2_Updated.zip
     echo "\"StarCraft 2 Ladder 2018 Season 2 Map data\" download finished!"
   else
     echo "\"StarCraft 2 Ladder 2018 Season 2 Map data\" found at \"$HOME/Ladder2018Season2_Updated.zip\"!"
@@ -81,7 +81,7 @@ if [ $downloadData = "Y" ] || [ $downloadData = "y" ]; then
   fileExist=$(find $HOME -maxdepth 1 -type f -name 'Melee.zip' | wc -l)
   if [ $fileExist -eq 0 ]; then
     echo "Downloading StarCraft 2 Melee Map data... (~300kB)"
-    wget -P=$HOME http://blzdistsc2-a.akamaihd.net/MapPacks/Melee.zip
+    wget -P $HOME http://blzdistsc2-a.akamaihd.net/MapPacks/Melee.zip
     echo "\"StarCraft 2 Melee Map data\" download finished!"
   else
     echo "\"StarCraft 2 Melee Map data\" found at \"$HOME/Melee.zip\"!"
