@@ -23,38 +23,78 @@ echo "(N) No, I do it by myself;"
 read -p "(Y/N) " downloadData
 echo ""
 
+echo "Checking if ${yellow}${black_background}python3${reset} is installed..."
+dpkg -s python3 > /dev/null 2>&1
+isInstalled=$?
+if [ $isInstalled -gt 0 ]; then
+  echo "${yellow}${black_background}python3${reset} package isn't installed."
+  echo "To install, just type in your terminal:"
+  echo "${yellow}${black_background}sudo apt install python3${reset}\n"
+  exit 1
+fi
+
+echo "Checking if ${yellow}${black_background}python3-venv${reset} is installed..."
+dpkg -s python3-venv > /dev/null 2>&1
+isInstalled=$?
+if [ $isInstalled -gt 0 ]; then
+  echo "${yellow}${black_background}python3-venv${reset} package isn't installed."
+  echo "To install, just type in your terminal:"
+  echo "${yellow}${black_background}sudo apt install python3-venv${reset}\n"
+  exit 1
+fi
+
+echo "Checking if ${yellow}${black_background}pip${reset} is installed..."
+python3 -c "import pip" > /dev/null 2>&1
+isInstalled=$?
+if [ $isInstalled -gt 0 ]; then
+  echo "${yellow}${black_background}pip${reset} package isn't installed."
+  echo "To install, just type in your terminal:"
+  echo "${yellow}${black_background}sudo apt install python3-pip${reset}\n"
+  exit 1
+fi
+
+echo "Checking if ${yellow}${black_background}venv${reset} is installed..."
+python3 -c "import venv" > /dev/null 2>&1
+isInstalled=$?
+if [ $isInstalled -gt 0 ]; then
+  echo "${yellow}${black_background}venv${reset} package isn't installed."
+  echo "To install, just type in your terminal:"
+  echo "${yellow}${black_background}sudo apt install python3-venv${reset}\n"
+  exit 1
+fi
+
+echo "Checking if ${yellow}${black_background}wget${reset} is installed..."
+dpkg -s wget > /dev/null 2>&1
+isInstalled=$?
+if [ $isInstalled -gt 0 ]; then
+  echo "${yellow}${black_background}wget${reset} package isn't installed."
+  echo "To install, just type in your terminal:"
+  echo "${yellow}${black_background}sudo apt install wget${reset}\n"
+  exit 1
+fi
+
+echo "Checking if ${yellow}${black_background}unzip${reset} is installed..."
+dpkg -s unzip > /dev/null 2>&1
+isInstalled=$?
+if [ $isInstalled -gt 0 ]; then
+  echo "${yellow}${black_background}unzip${reset} package isn't installed."
+  echo "To install, just type in your terminal:"
+  echo "${yellow}${black_background}sudo apt install unzip${reset}\n"
+  exit 1
+fi
+
+echo "Checking if ${yellow}${black_background}pv${reset} is installed..."
+dpkg -s pv > /dev/null 2>&1
+isInstalled=$?
+if [ $isInstalled -gt 0 ]; then
+  echo "${yellow}${black_background}pv${reset} package isn't installed."
+  echo "To install, just type in your terminal:"
+  echo "${yellow}${black_background}sudo apt install pv${reset}\n"
+  exit 1
+fi
+echo ""
+
 if [ $downloadData = "Y" ] || [ $downloadData = "y" ]; then
-  echo "Checking if ${yellow}${black_background}wget${reset} is installed..."
-  dpkg -s wget > /dev/null 2>&1
-  isInstalled=$?
-  if [ $isInstalled -gt 0 ]; then
-    echo "${yellow}${black_background}wget${reset} package isn't installed."
-    echo "To install, just type in your terminal:"
-    echo "${yellow}${black_background}sudo apt install wget${reset}\n"
-    exit 1
-  fi
-
-  echo "Checking if ${yellow}${black_background}unzip${reset} is installed..."
-  dpkg -s unzip > /dev/null 2>&1
-  isInstalled=$?
-  if [ $isInstalled -gt 0 ]; then
-    echo "${yellow}${black_background}unzip${reset} package isn't installed."
-    echo "To install, just type in your terminal:"
-    echo "${yellow}${black_background}sudo apt install unzip${reset}\n"
-    exit 1
-  fi
-
-  echo "Checking if ${yellow}${black_background}pv${reset} is installed..."
-  dpkg -s pv > /dev/null 2>&1
-  isInstalled=$?
-  if [ $isInstalled -gt 0 ]; then
-    echo "${yellow}${black_background}pv${reset} package isn't installed."
-    echo "To install, just type in your terminal:"
-    echo "${yellow}${black_background}sudo apt install pv${reset}\n"
-    exit 1
-  fi
-  echo ""
-
   echo "Searching for StarCraft 2 Client data..."
   fileExist=$(find $HOME -maxdepth 1 -type f -name 'SC2.4.1.2.60604_2018_05_16.zip' | wc -l)
   if [ $fileExist -eq 0 ]; then
@@ -131,37 +171,6 @@ else
   echo "Ok, then. You can do it! :)"
   echo "Extract all the data in $HOME/StarCraftII/"
   echo ""
-fi
-
-
-echo "Checking if ${yellow}${black_background}python3${reset} is installed..."
-dpkg -s python3 > /dev/null 2>&1
-isInstalled=$?
-if [ $isInstalled -gt 0 ]; then
-  echo "${yellow}${black_background}python3${reset} package isn't installed."
-  echo "To install, just type in your terminal:"
-  echo "${yellow}${black_background}sudo apt install python3${reset}\n"
-  exit 1
-fi
-
-echo "Checking if ${yellow}${black_background}pip${reset} is installed..."
-python3 -c "import pip" > /dev/null 2>&1
-isInstalled=$?
-if [ $isInstalled -gt 0 ]; then
-  echo "${yellow}${black_background}pip${reset} package isn't installed."
-  echo "To install, just type in your terminal:"
-  echo "${yellow}${black_background}sudo apt install python3-pip${reset}\n"
-  exit 1
-fi
-
-echo "Checking if ${yellow}${black_background}venv${reset} is installed..."
-python3 -c "import venv" > /dev/null 2>&1
-isInstalled=$?
-if [ $isInstalled -gt 0 ]; then
-  echo "${yellow}${black_background}venv${reset} package isn't installed."
-  echo "To install, just type in your terminal:"
-  echo "${yellow}${black_background}sudo apt install python3-venv${reset}\n"
-  exit 1
 fi
 
 echo "Checking if ${yellow}${black_background}imd_pysc2_env${reset} virtualenv is created..."
